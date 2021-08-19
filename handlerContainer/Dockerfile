@@ -16,4 +16,4 @@ CMD [ "npm", "run", "test" ]
 FROM base as prod
 RUN npm ci --production
 COPY . .
-CMD [ "node", "server.js" ]
+CMD [ "node", "server.ts" ]
