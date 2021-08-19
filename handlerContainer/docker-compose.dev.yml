@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    image: danerbrear/domain_ip_info_handler:latest
+    build:
+      context: .
+    ports:
+      - 8081:8081
+      - 9229:9229
+    environment:
+      - SERVER_PORT=8081
+    volumes:
+      - ./:/app
+    command: npm run debug
