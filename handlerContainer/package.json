@@ -8,6 +8,7 @@
     "build": "docker image build -t danerbrear/domain_ip_info_handler:latest",
     "start": "node server.js",
     "start-docker": "docker stop handlercontainer_app_1 && docker-compose -f docker-compose.dev.yml up --build",
+    "docker-test": "docker-compose -f docker-compose.dev.yml run app npm run test",
     "test-get": "curl --request GET --url http://localhost:8081/ --header 'content-type: application/json'",
     "debug": "nodemon --inspect=0.0.0.0:9229 server.js"
   },
