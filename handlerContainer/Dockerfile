@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:14.15.4 as base
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -8,9 +8,12 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN npm install
+FROM base as test
+RUN npm ci
 COPY . .
+CMD [ "npm", "run", "test" ]
 
-EXPOSE 8081
-
+FROM base as prod
+RUN npm ci --production
+COPY . .
 CMD [ "node", "server.js" ]

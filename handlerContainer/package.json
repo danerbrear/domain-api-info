@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha --recursive './test/*.ts'",
+    "build": "docker image build -t danerbrear/domain_ip_info_handler:latest",
     "start": "node server.js",
     "start-docker": "docker stop handlercontainer_app_1 && docker-compose -f docker-compose.dev.yml up --build",
     "test-get": "curl --request GET --url http://localhost:8081/ --header 'content-type: application/json'",
@@ -25,7 +26,7 @@
     "@types/express": "^4.17.13",
     "@types/mocha": "^9.0.0",
     "nodemon": "^2.0.12",
-    "tslint": "^5.12.1",
+    "tslint": "^6.1.3",
     "typescript": "^3.3.3"
   }
 }

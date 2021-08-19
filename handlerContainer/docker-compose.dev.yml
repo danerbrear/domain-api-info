@@ -5,6 +5,7 @@ services:
     image: danerbrear/domain_ip_info_handler:latest
     build:
       context: .
+      target: test
     ports:
       - 8081:8081
       - 9229:9229
