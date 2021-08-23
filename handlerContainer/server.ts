@@ -9,13 +9,34 @@ app.use(express.json());
 // app.set("views", path.join(__dirname, "views"));
 // app.set("view engine", "ejs");
 
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
 
 // Configure routes
 routes.register(app);
 
 // start the express server
-app.listen(port, () => {    
-    // tslint:disable-next-line:no-console    
+app.listen(port, () => {
+    // tslint:disable-next-line:no-console
     console.log( `server started at http://localhost:${port}`);
 });
+
+module.exports = api => {
+   const isTest = api.env('test');
+   // You can use isTest to determine what presets and plugins to use.
+
+   return {
+       presets: [
+           [
+               '@babel/preset-env',
+               '@babel/preset-typescript',
+               {
+                   targets: {
+                       node: 'current',
+                   },
+               },
+           ],
+       ],
+   };
+};
+
+export default app;
