@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "get-dns": "docker pull efrecon/htdns",
+    "run-dns": "docker run -it --rm -p 8053:8053 -p 53:53 --name=dns -e DNSTTL=1800 efrecon/htdns --level=debug"
+  },
+  "dependencies": {
+    "dns": "^0.2.2"
+  }
+}
