@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.ts",
+  "jest": {
+    "testPathIgnorePatterns": [
+      "__tests__/helpers"
+    ]
+  },
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "start": "node server.ts",
@@ -12,12 +17,13 @@
     "start-docker": "docker stop handlercontainer_app_1 && docker-compose -f docker-compose.dev.yml up --build",
     "test-docker": "docker-compose -f docker-compose.dev.yml run app npm run test",
     "test-get": "curl --request GET --url http://localhost:8081/ --header 'content-type: application/json'",
-    "debug": "nodemon --inspect=0.0.0.0:9229 server.ts"
+    "debug": "nodemon"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/supertest": "^2.0.11",
     "express": "^4.16.1",
     "namor": "^2.0.3",
     "ts-node": "^9.0.0",
@@ -31,8 +37,10 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-jest": "^27.0.6",
+    "express-request-mock": "^3.1.0",
     "jest": "^27.0.6",
     "nodemon": "^2.0.12",
+    "supertest": "^6.1.6",
     "ts-jest": "^27.0.5",
     "tslint": "^6.1.3",
     "typescript": "^3.3.3"

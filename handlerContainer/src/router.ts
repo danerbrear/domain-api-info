@@ -1,7 +1,8 @@
 import { Application, Request, Response } from "express";
+import {
+    get
+} from './handler';
 
-export const register = (app: Application) => {
-    app.get('/', (req: Request, res: Response) => {
-        res.status(200).json({message: "Get request successfull"});
-    })
+export const register = async (app: Application) => {
+    app.get('/', get);
 }

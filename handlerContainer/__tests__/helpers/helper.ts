@@ -3,15 +3,16 @@ import {
     getRandomNumber,
     getRandomDomain
 } from "../../src/utils";
+import { Request, Response } from "express";
 
-export const randomGetEventWithDomain: () => Event = () => ({
+export const randomGetEventWithDomain: () => Record<string, any> = () => ({
+    method: 'GET',
     resource: '/',
     path: '/',
-    queryStringParameters: {
+    params: {
         domain: (getRandomNumber(0, 1) == 1 ? getRandomDomain() : undefined),
     },
-    multiValueQueryStringParameters: {
-        options: []
-    },
-    method: 'GET'
+    headers: {
+        'Content-Type': 'application/json'
+    }
 })

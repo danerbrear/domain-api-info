@@ -27,7 +27,7 @@ export default {
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
-  //   "/node_modules/"
+  //   "./_tests_/helpers/**"
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
@@ -84,7 +84,9 @@ export default {
   // moduleNameMapper: {},
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
-  // modulePathIgnorePatterns: [],
+  // modulePathIgnorePatterns: [
+  //   "<rootDir>/__tests__/helpers"
+  // ],
 
   // Activates notifications for test results
   // notify: false,

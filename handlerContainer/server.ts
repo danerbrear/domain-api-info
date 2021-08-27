@@ -14,14 +14,8 @@ app.use(express.json());
 // Configure routes
 routes.register(app);
 
-// start the express server
-app.listen(port, () => {
-    // tslint:disable-next-line:no-console
-    console.log( `server started at http://localhost:${port}`);
-});
-
-module.exports = api => {
-   const isTest = api.env('test');
+module.exports = () => {
+   // const isTest = api.env('test');
    // You can use isTest to determine what presets and plugins to use.
 
    return {
@@ -38,5 +32,11 @@ module.exports = api => {
        ],
    };
 };
+
+// start the express server
+app.listen(port, () => {
+   // tslint:disable-next-line:no-console
+   console.log( `server started at http://localhost:${port}`);
+});
 
 export default app;
