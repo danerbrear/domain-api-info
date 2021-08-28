@@ -3,9 +3,10 @@ version: '3.8'
 services:
   app:
     image: danerbrear/reverse-dns:latest
-    build: .
+    build: 
+      context: .
     ports:
-      - 8081:8081
+      - 8082:8082
       - 9229:9229
     environment:
       - SERVER_PORT=8081
