@@ -1,2 +1,6 @@
 /node_modules
 /handlerContainer/node_modules
+/reverseDnsContainer/node_modules
+
+/handlerContainer/package-lock.json
+/reverseDnsContainer/package-lock.json

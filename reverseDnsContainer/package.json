@@ -1,0 +1,33 @@
+{
+  "name": "reversednscontainer",
+  "version": "1.0.0",
+  "description": "Service to reverse an IP address to a domain",
+  "main": "server.js",
+  "scripts": {
+    "start-docker": "tsc && docker-compose -f docker-compose.dev.yml up --build",
+    "transpile": "tsc",
+    "test": "jest"
+  },
+  "author": "Dane Brear",
+  "license": "ISC",
+  "dependencies": {
+    "@types/supertest": "^2.0.11",
+    "express": "^4.16.1",
+    "namor": "^2.0.3",
+    "ts-node": "^9.0.0"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.0.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^27.0.6",
+    "express-request-mock": "^3.1.0",
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12",
+    "ts-jest": "^27.0.5",
+    "tslint": "^6.1.3",
+    "typescript": "^3.9.10"
+  }
+}
