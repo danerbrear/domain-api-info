@@ -2,9 +2,9 @@
   "name": "reversednscontainer",
   "version": "1.0.0",
   "description": "Service to reverse an IP address to a domain",
-  "main": "server.js",
+  "main": "dist/server.js",
   "scripts": {
-    "start-docker": "tsc && docker-compose -f docker-compose.dev.yml up --build",
+    "start-docker": "tsc && docker-compose -f docker-compose.dev.yml up -d --build",
     "transpile": "tsc",
     "test": "jest"
   },

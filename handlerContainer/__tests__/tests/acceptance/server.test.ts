@@ -1,13 +1,8 @@
-import { Application, Request, Response } from "express";
-import request from 'supertest';
-
 process.env.NODE_ENV = 'test';
 
 import { get } from '../../../src/handler';
 import expressRequestMock from 'express-request-mock';
 import { randomGetEventWithDomain } from "../../helpers/helper";
-
-const BASE_URL: string = "http://localhost:8081"
 
 describe('The handler application', () => {
   describe('when the request is successful', () => {

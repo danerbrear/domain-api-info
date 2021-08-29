@@ -5,10 +5,11 @@ services:
     image: danerbrear/reverse-dns:latest
     build: 
       context: .
+      target: prod
     ports:
       - 8082:8082
-      - 9229:9229
     environment:
-      - SERVER_PORT=8081
+      - SERVER_PORT=8082
+      - NODE_ENV=prod
     volumes:
       - ./:/app

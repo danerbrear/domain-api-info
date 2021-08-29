@@ -24,7 +24,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const routes = __importStar(require("./src/router"));
-const port = 8081;
+const port = 8083;
 const app = express_1.default();
 app.use(express_1.default.json());
 // app.set("views", path.join(__dirname, "views"));
@@ -32,11 +32,6 @@ app.use(express_1.default.json());
 // app.use(express.static(path.join(__dirname, "public")));
 // Configure routes
 routes.register(app);
-// start the express server
-app.listen(port, () => {
-    // tslint:disable-next-line:no-console
-    console.log(`server started at http://localhost:${port}`);
-});
 module.exports = () => {
     // const isTest = api.env('test');
     // You can use isTest to determine what presets and plugins to use.
@@ -54,5 +49,10 @@ module.exports = () => {
         ],
     };
 };
+// start the express server
+app.listen(port, () => {
+    // tslint:disable-next-line:no-console
+    console.log(`server started at http://localhost:${port}`);
+});
 exports.default = app;
 //# sourceMappingURL=server.js.map

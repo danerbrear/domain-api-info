@@ -4,3 +4,6 @@
 
 /handlerContainer/package-lock.json
 /reverseDnsContainer/package-lock.json
+
+/handlerContainer/dist
+/reverseDnsContainer/dist

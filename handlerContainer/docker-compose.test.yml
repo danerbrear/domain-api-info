@@ -5,7 +5,7 @@ services:
     image: danerbrear/domain_ip_info_handler:latest
     build:
       context: .
-      target: prod
+      target: test
     ports:
       - 8083:8083
       - 9229:9229
