@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  app:
+  domain-service:
     image: danerbrear/reverse-dns:latest
     build: 
       context: .
@@ -13,3 +13,8 @@ services:
       - NODE_ENV=prod
     volumes:
       - ./:/app
+
+networks:
+  default:
+    external: true
+    name: domain-ip-info-net

@@ -12,7 +12,7 @@
     "test": "jest",
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "start": "node dist/server.js",
-    "start-docker": "tsc && docker-compose -f docker-compose.dev.yml up -d --build",
+    "start-docker": "tsc && docker-compose -f docker-compose.dev.yml up --build",
     "test-docker": "docker-compose -f docker-compose.test.yml run app npm run test",
     "test-get": "curl --request GET --url http://localhost:8081/ --header 'content-type: application/json'",
     "debug": "nodemon"
@@ -22,6 +22,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/supertest": "^2.0.11",
+    "axios": "^0.21.1",
     "express": "^4.16.1",
     "namor": "^2.0.3",
     "ts-node": "^9.0.0",

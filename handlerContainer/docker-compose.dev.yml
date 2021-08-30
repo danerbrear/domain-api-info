@@ -13,3 +13,8 @@ services:
       - SERVER_PORT=8083
     volumes:
       - ./:/app
+
+networks:
+  default:
+    external: true
+    name: domain-ip-info-net
