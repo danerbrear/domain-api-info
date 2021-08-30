@@ -4,7 +4,7 @@
   "description": "Service to reverse an IP address to a domain",
   "main": "dist/server.js",
   "scripts": {
-    "start-docker": "tsc && docker-compose -f docker-compose.dev.yml up -d --build",
+    "start-docker": "tsc && docker-compose -f docker-compose.dev.yml up --build",
     "transpile": "tsc",
     "test": "jest"
   },
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/supertest": "^2.0.11",
+    "dns": "^0.2.2",
     "express": "^4.16.1",
     "namor": "^2.0.3",
     "ts-node": "^9.0.0"
