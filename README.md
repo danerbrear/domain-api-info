@@ -4,20 +4,19 @@ This project is a node.js api to get information on your IP address or your doma
 
 The project contains different services that are separated into individual Docker container images:
 - Handler
+- Reverse DNS
 
-## Run a container image locally
-1. `cd` into a project file with a `package.json` file in its directory
-2. run `npm run start-docker`
+## Prerequisites
 
-## Run and debug with Chrome
+1. You must have the Docker CLI installed
 
-3. First run the container image. In a new chrome tab, go to `about:inspect`. Select the link, "Open dedicated DevTools for Node", to see a console for all active connections.
+If not, follow the steps in [this link](https://docs.docker.com/engine/install/) to install Docker.
 
-## Run tests
+## Start the Docker containers (workers)
 
-To test in the container: First run the container image, then execute `npm run docker-test`.
+From the root directory of the project, run `npm run start-containers`
 
-To test the server locally: First run the container image, then execute `npm test`
+Note: To see all active containers, run `docker ps`
 
 ## CI/CD
 
