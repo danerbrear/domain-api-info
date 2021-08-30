@@ -4,13 +4,25 @@ services:
   app:
     image: danerbrear/domain_ip_info_handler:latest
     build:
-      context: .
+      context: ./handlerContainer
       target: prod
     ports:
       - 8083:8083
       - 9229:9229
     environment:
       - SERVER_PORT=8083
+    volumes:
+      - ./:/app
+  domain-service:
+    image: danerbrear/reverse-dns:latest
+    build: 
+      context: ./reverseDnsContainer
+      target: prod
+    ports:
+      - 8082:8082
+    environment:
+      - SERVER_PORT=8082
+      - NODE_ENV=prod
     volumes:
       - ./:/app
 
