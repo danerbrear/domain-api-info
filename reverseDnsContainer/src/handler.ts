@@ -10,16 +10,12 @@ export const get = async (req: Request, res: Response) => {
             console.log(err, hostnames);
             
             if (!err) {
+                res.status(200);
                 res.send({
-                    statusCode: 200,
-                    body: {
-                        domain: hostnames
-                    },
-                    headers: {
-                        'content-type': 'application/json'
-                    }
+                    hostnames
                 })
             } else {
+                res.status(500);
                 res.send({
                     statusCode: 500,
                     body: 'Received an error from reverse dns service.',
@@ -27,11 +23,10 @@ export const get = async (req: Request, res: Response) => {
             }
         })
     } else {
+        res.status(400);
         res.send({
             statusCode: 400,
             body: 'Bad request.',
         })
     }
-
-    
 }

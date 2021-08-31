@@ -12,7 +12,7 @@ export type Event = {
 }
 
 export type ReverseDNSResponse = {
-    domain: Array<string>;
+    hostnames: Array<string>;
 };
 
 export type FromIPResponse = {
