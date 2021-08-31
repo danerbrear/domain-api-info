@@ -1,32 +1,27 @@
 import { Request, Response } from "express";
-import * as dns from 'dns';
+import { IPStackService } from "./ipStackService";
 
 export const get = async (req: Request, res: Response) => {
     const ip = req.query.ip as string;
-    console.log("IP Address: ", ip);
+    const accessToken = req.headers['x-api-key'] as string;
 
-    if (ip) {
-        dns.reverse(ip, (err, hostnames) => {
-            console.log(err, hostnames);
-            
-            if (!err) {
+    if (ip && accessToken) {
+        const service = new IPStackService(accessToken);
+        await service.getIpInfo(ip)
+            .then((data) => {
                 res.status(200);
-                res.send({
-                    hostnames
-                })
-            } else {
-                res.status(500);
-                res.send({
-                    statusCode: 500,
-                    body: 'Received an error from reverse dns service.',
-                })
-            }
-        })
+                res.send(data);
+            })
+            .catch((err) => {
+                res.status(err.code);
+                res.send(err);
+            })
     } else {
+        console.error("Missing either the IP Address or the IPStack access key.")
         res.status(400);
         res.send({
             statusCode: 400,
-            body: 'Bad request.',
+            message: 'Bad request: Missing either the IP Address or the IPStack access key.',
         })
     }
 }

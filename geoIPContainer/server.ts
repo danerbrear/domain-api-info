@@ -1,7 +1,6 @@
 // geoIPContainer
 
 import express from "express";
-import path from "path";
 import * as routes from "./src/router";
 
 const port = 8084;
