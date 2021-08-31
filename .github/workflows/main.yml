@@ -43,12 +43,24 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-      - name: Build and push
+      - name: Build and push handler
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           context: ./handlerContainer/
           file: ./handlerContainer/Dockerfile
+          builder: ${{ steps.buildx.outputs.name }}
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/domain_ip_info_handler:latest
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+
+      - name: Build and push reverse dns
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./reverseDnsContainer/
+          file: ./reverseDnsContainer/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/domain_ip_info_handler:latest
