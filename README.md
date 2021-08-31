@@ -25,6 +25,8 @@ From the root directory of the project, run `npm run start-containers`
 
 Note: To see all active containers, run `docker ps`
 
+Note: Here is a postman collection you can import to help test the API: `https://www.getpostman.com/collections/a1c849c1500618b901a5`
+
 <br><br>
 
 # Usage
