@@ -1,4 +1,5 @@
 import { HttpWrapper } from './httpWrapper';
+import { ReverseDNSResponse } from './types';
 
 const BASE_URL: string = "http://domain-service:8082";
 
@@ -7,5 +8,5 @@ export class DnsService extends HttpWrapper {
         super(BASE_URL, ip);
     }
 
-    public getDomains = () => this.instance.get('/')
+    public getDomains: () => Promise<ReverseDNSResponse> = () => this.instance.get('/');
 }
