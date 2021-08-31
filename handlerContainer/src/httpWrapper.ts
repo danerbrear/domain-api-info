@@ -7,10 +7,11 @@ declare module 'axios' {
 export abstract class HttpWrapper {
   protected readonly instance: AxiosInstance;
 
-  public constructor(baseURL: string, ip: string) {
+  public constructor(baseURL: string, ip: string, headers: Record<string, string> = {}) {
     this.instance = axios.create({
       baseURL,
-      params: { ip }
+      params: { ip },
+      headers
     });
 
     this._initializeResponseInterceptor();

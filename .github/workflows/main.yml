@@ -67,5 +67,17 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
+      - name: Build and push geo ip info container
+        id: docker_build_geo_ip_info
+        uses: docker/build-push-action@v2
+        with:
+          context: ./geoIPContainer/
+          file: ./geoIPContainer/Dockerfile
+          builder: ${{ steps.buildx.outputs.name }}
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/geo_ip_info:latest
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

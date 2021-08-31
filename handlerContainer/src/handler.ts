@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
 import { DnsService } from "./dns-service";
+import { GeoIPService } from "./geo-ip-service";
 import { FromIPResponse, QueryOptions } from "./types";
 
 export const get = async (req: Request, res: Response) => {
 
-    console.log(req.query);
+    console.debug(req.query);
 
     if (req.query.ip) {
 
@@ -22,19 +23,45 @@ export const get = async (req: Request, res: Response) => {
                     response.domains = data.hostnames;
                 })
                 .catch((err) => {
-                    console.error(err);
-                    res.status(500);
-                    res.send({
-                        err
-                    })
+                    console.warn("Reverse DNS service error: ", err.message);
+                    response.domains = {
+                        statusCode: 500,
+                        message: err.message
+                    }
                 })
             )
-        } else {
-            console.error("Could not run services.");
-            res.status(500);
+        } 
+        
+        if (options.includes(QueryOptions.geoIp)) {
+            const access_key = req.headers['x-api-key'] as string;
+
+            if (access_key) {
+                const service = new GeoIPService(req.query.ip as string, access_key);
+                promises.push(service.getGeoInfo()
+                    .then((data) => {
+                        response.geoInfo = data;
+                    })
+                    .catch((err) => {
+                        console.warn("Geo IP Info service error: ", err.message);
+                        response.geoInfo = {
+                            statusCode: err.statusCode,
+                            message: err.message
+                        }
+                    })
+                )
+            } else {
+                response.geoInfo = {
+                    statusCode: 400,
+                    message: "Please include an access key for IPStack in the request headers."
+                };
+            }
+        } 
+        
+        if (options.length === 0) {
+            res.status(200);
             res.send({
-                statusCode: 500,
-                message: 'Could not run services.'
+                statusCode: 200,
+                message: 'Did not run services.'
             })
             return;
         }
