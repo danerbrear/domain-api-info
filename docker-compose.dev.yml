@@ -25,6 +25,18 @@ services:
       - NODE_ENV=prod
     volumes:
       - ./:/app
+  geo-ip-service:
+    image: danerbrear/geo-ip:latest
+    build: 
+      context: ./geoIPContainer
+      target: prod
+    ports:
+      - 8084:8084
+    environment:
+      - SERVER_PORT=8084
+      - NODE_ENV=prod
+    volumes:
+      - ./:/app
 
 networks:
   default:

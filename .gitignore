@@ -1,6 +1,8 @@
 /node_modules
 /handlerContainer/node_modules
 /reverseDnsContainer/node_modules
+/geoIPContainer/node_modules
 
 /handlerContainer/dist
 /reverseDnsContainer/dist
+/geoIPContainer/dist

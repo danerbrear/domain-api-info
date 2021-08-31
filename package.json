@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-containers": "cd handlerContainer && tsc && cd ../reverseDnsContainer && tsc && cd ..",
+    "build-containers": "cd handlerContainer && tsc && cd ../reverseDnsContainer && tsc && cd ../geoIPContainer && tsc && cd ..",
     "start-containers": "npm run build-containers && docker-compose -f docker-compose.dev.yml up --build"
   },
   "repository": {
